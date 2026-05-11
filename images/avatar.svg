@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#0a1929"/>
+    </linearGradient>
+    <radialGradient id="skin" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#d4a878"/>
+      <stop offset="70%" stop-color="#b88858"/>
+      <stop offset="100%" stop-color="#9c6f44"/>
+    </radialGradient>
+    <linearGradient id="hair" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a1810"/>
+      <stop offset="100%" stop-color="#1a0e08"/>
+    </linearGradient>
+    <linearGradient id="beard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a0e08"/>
+      <stop offset="100%" stop-color="#2a1810"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8d5c4"/>
+      <stop offset="100%" stop-color="#c4a890"/>
+    </linearGradient>
+    <radialGradient id="ring" cx="50%" cy="50%" r="50%">
+      <stop offset="80%" stop-color="transparent"/>
+      <stop offset="95%" stop-color="#3b82f6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="200" fill="url(#bg)"/>
+
+  <!-- Subtle network lines decoration -->
+  <g opacity="0.15" stroke="#3b82f6" stroke-width="1" fill="none">
+    <circle cx="200" cy="200" r="180" stroke-dasharray="2 6"/>
+    <circle cx="200" cy="200" r="160" stroke-dasharray="1 8"/>
+  </g>
+
+  <!-- Glow ring -->
+  <circle cx="200" cy="200" r="200" fill="url(#ring)"/>
+
+  <!-- Neck/collar shadow -->
+  <path d="M 145 320 Q 200 305 255 320 L 270 400 L 130 400 Z" fill="#8a6442"/>
+
+  <!-- Shirt -->
+  <path d="M 100 400 L 130 320 Q 165 340 200 340 Q 235 340 270 320 L 300 400 Z" fill="url(#shirt)"/>
+  <path d="M 165 340 Q 180 360 200 360 Q 220 360 235 340 L 230 380 L 200 360 L 170 380 Z" fill="#a88565" opacity="0.6"/>
+  <line x1="200" y1="355" x2="200" y2="400" stroke="#9c7656" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Neck -->
+  <path d="M 170 290 Q 170 325 200 330 Q 230 325 230 290 Z" fill="url(#skin)"/>
+  <ellipse cx="200" cy="325" rx="30" ry="5" fill="#9c6f44" opacity="0.4"/>
+
+  <!-- Face base (oval, slightly rounded jaw) -->
+  <ellipse cx="200" cy="200" rx="92" ry="108" fill="url(#skin)"/>
+
+  <!-- Face shadow side -->
+  <path d="M 200 92 Q 292 100 292 200 Q 290 280 230 295 Q 200 300 200 300 Z" fill="#9c6f44" opacity="0.18"/>
+
+  <!-- Hair - fade haircut (sides very short, top fuller) -->
+  <!-- Back/sides fade -->
+  <path d="M 108 165 Q 105 130 130 110 Q 165 80 200 80 Q 235 80 270 110 Q 295 130 292 165 L 292 200 Q 290 175 280 165 L 280 150 Q 260 130 200 130 Q 140 130 120 150 L 120 165 Q 110 175 108 200 Z" fill="url(#hair)"/>
+
+  <!-- Top hair volume -->
+  <path d="M 125 145 Q 130 95 200 90 Q 270 95 275 145 Q 270 110 200 110 Q 130 110 125 145 Z" fill="#1a0e08"/>
+
+  <!-- Hairline detail -->
+  <path d="M 130 145 Q 150 132 200 130 Q 250 132 270 145 Q 230 138 200 138 Q 170 138 130 145 Z" fill="#0d0604"/>
+
+  <!-- Ears -->
+  <ellipse cx="110" cy="200" rx="10" ry="18" fill="url(#skin)"/>
+  <ellipse cx="290" cy="200" rx="10" ry="18" fill="url(#skin)"/>
+  <path d="M 108 195 Q 112 200 110 210" fill="none" stroke="#9c6f44" stroke-width="1.2" opacity="0.5"/>
+  <path d="M 292 195 Q 288 200 290 210" fill="none" stroke="#9c6f44" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- Eyebrows (thick, dark) -->
+  <path d="M 148 180 Q 165 172 188 178 Q 168 173 148 182 Z" fill="#1a0e08"/>
+  <path d="M 252 180 Q 235 172 212 178 Q 232 173 252 182 Z" fill="#1a0e08"/>
+
+  <!-- Eyes (warm, slightly squinted from smile) -->
+  <g>
+    <!-- Left eye -->
+    <path d="M 155 198 Q 170 192 185 198 Q 170 204 155 198 Z" fill="#fff"/>
+    <ellipse cx="170" cy="199" rx="5" ry="4.5" fill="#3a2418"/>
+    <circle cx="170" cy="199" r="2.5" fill="#1a0e08"/>
+    <circle cx="171" cy="197.5" r="1" fill="#fff"/>
+    <!-- Eye creases (smile) -->
+    <path d="M 148 195 Q 152 200 156 196" fill="none" stroke="#9c6f44" stroke-width="1" opacity="0.6"/>
+
+    <!-- Right eye -->
+    <path d="M 215 198 Q 230 192 245 198 Q 230 204 215 198 Z" fill="#fff"/>
+    <ellipse cx="230" cy="199" rx="5" ry="4.5" fill="#3a2418"/>
+    <circle cx="230" cy="199" r="2.5" fill="#1a0e08"/>
+    <circle cx="231" cy="197.5" r="1" fill="#fff"/>
+    <path d="M 244 195 Q 248 200 252 196" fill="none" stroke="#9c6f44" stroke-width="1" opacity="0.6"/>
+  </g>
+
+  <!-- Nose (subtle, straight) -->
+  <path d="M 200 205 Q 197 230 195 245 Q 200 250 205 245 Q 203 230 200 205" fill="#9c6f44" opacity="0.35"/>
+  <ellipse cx="196" cy="246" rx="2" ry="1.5" fill="#9c6f44" opacity="0.5"/>
+  <ellipse cx="204" cy="246" rx="2" ry="1.5" fill="#9c6f44" opacity="0.5"/>
+
+  <!-- Cheeks (subtle warmth from smile) -->
+  <ellipse cx="155" cy="235" rx="14" ry="8" fill="#c4805a" opacity="0.25"/>
+  <ellipse cx="245" cy="235" rx="14" ry="8" fill="#c4805a" opacity="0.25"/>
+
+  <!-- Mustache -->
+  <path d="M 175 258 Q 185 252 200 254 Q 215 252 225 258 Q 218 256 200 257 Q 182 256 175 258 Z" fill="#1a0e08"/>
+  <path d="M 170 258 Q 180 260 195 260 L 195 262 Q 180 262 170 260 Z" fill="#1a0e08"/>
+  <path d="M 230 258 Q 220 260 205 260 L 205 262 Q 220 262 230 260 Z" fill="#1a0e08"/>
+
+  <!-- Smile / mouth -->
+  <path d="M 178 270 Q 200 285 222 270 Q 200 295 178 270 Z" fill="#5c2a1a"/>
+  <!-- Teeth (smile visible) -->
+  <path d="M 182 272 Q 200 282 218 272 Q 200 278 182 272 Z" fill="#f5f0e8"/>
+  <line x1="190" y1="274" x2="190" y2="280" stroke="#d4c4b0" stroke-width="0.5"/>
+  <line x1="200" y1="275" x2="200" y2="281" stroke="#d4c4b0" stroke-width="0.5"/>
+  <line x1="210" y1="274" x2="210" y2="280" stroke="#d4c4b0" stroke-width="0.5"/>
+
+  <!-- Beard (full but trimmed, around mouth and jaw) -->
+  <!-- Top beard / mustache connection to beard -->
+  <path d="M 165 268 Q 170 280 175 290 Q 200 285 225 290 Q 230 280 235 268 Q 220 272 200 272 Q 180 272 165 268 Z" fill="url(#beard)"/>
+
+  <!-- Main beard (jaw line) -->
+  <path d="M 140 240
+           Q 138 270 145 295
+           Q 155 315 175 320
+           Q 200 325 225 320
+           Q 245 315 255 295
+           Q 262 270 260 240
+           Q 258 270 245 295
+           Q 230 308 200 310
+           Q 170 308 155 295
+           Q 142 270 140 240 Z" fill="url(#beard)"/>
+
+  <!-- Beard texture density -->
+  <path d="M 150 270 Q 200 320 250 270 Q 245 308 200 315 Q 155 308 150 270 Z" fill="#0d0604" opacity="0.5"/>
+
+  <!-- Chin patch / soul patch -->
+  <path d="M 192 290 Q 200 300 208 290 Q 200 308 192 290 Z" fill="#0d0604"/>
+
+  <!-- Subtle highlights on hair -->
+  <path d="M 155 105 Q 170 100 185 102 Q 175 105 160 108 Z" fill="#3a2418" opacity="0.5"/>
+  <path d="M 215 105 Q 230 100 245 102 Q 235 105 220 108 Z" fill="#3a2418" opacity="0.5"/>
+
+  <!-- Face highlight (forehead) -->
+  <ellipse cx="200" cy="160" rx="35" ry="12" fill="#e8c498" opacity="0.2"/>
+</svg>
