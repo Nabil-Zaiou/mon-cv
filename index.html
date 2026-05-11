@@ -292,6 +292,11 @@
     .hero-stats{grid-template-columns:repeat(3,1fr);gap:8px}
     .stat-num{font-size:22px}
   }
+ /* === Lightbox === */
+  #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;justify-content:center;align-items:center;cursor:zoom-out}
+  #lightbox.active{display:flex}
+  #lightbox img{max-width:90vw;max-height:90vh;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.6);cursor:default}
+  #lightbox-close{position:fixed;top:20px;right:28px;color:white;font-size:2.5rem;cursor:pointer;line-height:1;user-select:none}
 </style>
 </head>
 <body>
@@ -805,5 +810,40 @@
   },{threshold:0.2});
   document.querySelectorAll('.skill-cat').forEach(c=>observer.observe(c));
 </script>
+ </script>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <span id="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="Image agrandie">
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  document.querySelectorAll('.project-imgs div').forEach(div => {
+    div.style.cursor = 'zoom-in';
+    div.addEventListener('click', () => {
+      const url = div.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+      lightboxImg.src = url;
+      lightbox.classList.add('active');
+    });
+  });
+
+  document.getElementById('lightbox-close').addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.classList.remove('active');
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+  });
+</script>
+
+</body>
+</html>
 </body>
 </html>
