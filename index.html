@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Nabil Zaiou — Administrateur Systèmes & Réseaux. 9+ ans d'expérience en infrastructures réseau, téléphonie IP, vidéosurveillance et sécurité.">
+<title>Nabil Zaiou · Administrateur Systèmes & Réseaux</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a1929'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Inter,sans-serif' font-size='16' font-weight='800' fill='%2306b6d4'%3ENZ%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#0a1929;
+    --navy-2:#0f2942;
+    --navy-3:#132f4c;
+    --blue:#3b82f6;
+    --blue-light:#60a5fa;
+    --cyan:#06b6d4;
+    --cyan-light:#22d3ee;
+    --text:#1a2540;
+    --text-light:#5e6783;
+    --bg:#f8fafc;
+    --bg-2:#eef2f7;
+    --white:#ffffff;
+    --border:#e2e8f0;
+    --success:#10b981;
+  }
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;font-weight:400}
+  .display{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-0.02em;line-height:1.1}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:0.02em}
+
+  /* === Scroll progress bar === */
+  .scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));z-index:9999;width:0;transition:width 0.1s}
+
+  /* === Subtle grid bg === */
+  .bg-grid{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(15,41,66,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(15,41,66,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;mask-image:radial-gradient(ellipse at center,#000 40%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at center,#000 40%,transparent 80%)}
+
+  /* === Header === */
+  header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(248,250,252,0.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all 0.3s;padding:18px 48px;display:flex;align-items:center;justify-content:space-between}
+  header.scrolled{border-bottom-color:var(--border);padding:14px 48px;background:rgba(248,250,252,0.95)}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy)}
+  .logo-mark{width:40px;height:40px;background:linear-gradient(135deg,var(--navy),var(--navy-3));color:var(--cyan);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(10,25,41,0.15);position:relative;overflow:hidden}
+  .logo-mark::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,0.1) 50%,transparent 70%);animation:shine 4s linear infinite}
+  @keyframes shine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+  .logo-text{display:flex;flex-direction:column;line-height:1.1}
+  .logo-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px;color:var(--navy)}
+  .logo-role{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);font-weight:500;margin-top:2px}
+
+  nav ul{display:flex;list-style:none;gap:32px;align-items:center}
+  nav a{color:var(--text);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s;position:relative}
+  nav a:not(.cta-btn)::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--cyan);transition:width 0.3s}
+  nav a:hover:not(.cta-btn)::after{width:100%}
+  nav a:hover{color:var(--blue)}
+  .cta-btn{background:var(--navy);color:#fff!important;padding:10px 22px;border-radius:100px;font-weight:600;font-size:13px;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
+  .cta-btn:hover{background:var(--blue);transform:translateY(-1px);box-shadow:0 8px 20px rgba(59,130,246,0.3)}
+
+  /* Burger mobile */
+  .burger{display:none;background:transparent;border:none;color:var(--navy);cursor:pointer;padding:8px;z-index:1002;position:relative}
+  .burger svg{display:block;transition:transform 0.3s}
+  .burger.open svg{transform:rotate(90deg)}
+  body.menu-open{overflow:hidden}
+
+  /* === Hero === */
+  .hero{min-height:100vh;padding:120px 48px 80px;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center;max-width:1400px;margin:0 auto;position:relative}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--success);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;letter-spacing:0.3px;margin-bottom:24px}
+  .hero-badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--success);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.5)}50%{box-shadow:0 0 0 8px rgba(16,185,129,0)}}
+  .hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(48px,6vw,76px);font-weight:800;line-height:1.05;margin-bottom:24px;letter-spacing:-0.03em}
+  .hero h1 .grad{background:linear-gradient(135deg,var(--blue) 0%,var(--cyan) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-sub{font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--blue);margin-bottom:24px;height:32px;display:flex;align-items:center}
+  .hero-sub::before{content:'>';color:var(--cyan);margin-right:10px;font-weight:700}
+  .typed-text{border-right:2px solid var(--cyan);padding-right:4px;animation:caret 1s steps(1) infinite}
+  @keyframes caret{50%{border-color:transparent}}
+  .hero p{font-size:17px;color:var(--text-light);max-width:560px;margin-bottom:40px;line-height:1.75}
+  .hero p strong{color:var(--text);font-weight:600}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:100px;font-weight:600;font-size:14px;transition:all 0.25s;cursor:pointer;border:none;font-family:inherit;text-decoration:none}
+  .btn-primary{background:linear-gradient(135deg,var(--navy),var(--navy-3));color:#fff;box-shadow:0 8px 24px rgba(10,25,41,0.18)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(10,25,41,0.25)}
+  .btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text)}
+  .btn-outline:hover{border-color:var(--navy);background:var(--white)}
+
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:40px;border-top:1px solid var(--border);max-width:560px}
+  .stat-num{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:36px;color:var(--navy);line-height:1;letter-spacing:-0.02em}
+  .stat-num .plus{color:var(--cyan)}
+  .stat-label{font-size:12px;color:var(--text-light);margin-top:6px;letter-spacing:0.3px;font-weight:500}
+
+  /* Hero visual : avatar */
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+  .avatar-wrap{position:relative;width:340px;height:340px}
+  .avatar-glow{position:absolute;inset:-30px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,0.25) 0%,transparent 70%);animation:glow 4s ease-in-out infinite}
+  @keyframes glow{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:0.7;transform:scale(1.05)}}
+  .avatar-img{width:100%;height:100%;border-radius:50%;background:url('images/avatar.png') center 30%/cover #f5f1ea;position:relative;z-index:2;border:6px solid rgba(255,255,255,0.85);box-shadow:0 20px 60px rgba(10,25,41,0.2)}
+  .avatar-ring{position:absolute;inset:-12px;border-radius:50%;border:2px dashed rgba(59,130,246,0.3);animation:rotate 30s linear infinite}
+  @keyframes rotate{to{transform:rotate(360deg)}}
+  .floating-card{position:absolute;background:var(--white);padding:14px 18px;border-radius:14px;box-shadow:0 12px 40px rgba(10,25,41,0.12);display:flex;align-items:center;gap:10px;z-index:3;font-size:13px;font-weight:600;opacity:0;transition:opacity 0.8s ease,transform 0.8s ease;pointer-events:none;transform:translateY(8px) scale(0.96)}
+  .floating-card.visible{opacity:1;transform:translateY(0) scale(1);animation:float 4s ease-in-out infinite}
+  .floating-card .ic{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+  .fc-slot1{top:30px;left:-30px}
+  .fc-slot2{bottom:60px;right:-50px;animation-delay:1.5s}
+  .fc-slot3{bottom:-10px;left:20px;animation-delay:3s}
+  .fc-slot1.visible{animation-delay:0s}
+  .fc-slot2.visible{animation-delay:1.5s}
+  .fc-slot3.visible{animation-delay:3s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .fc-sub{font-size:10px;color:var(--text-light);font-weight:500;margin-top:1px;letter-spacing:0.3px}
+  .fc-title{display:flex;align-items:center;gap:6px;white-space:nowrap}
+
+  /* === Sections === */
+  section{padding:120px 48px;max-width:1400px;margin:0 auto;position:relative}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 64px}
+  .section-tag{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;font-weight:600}
+  .section-tag::before,.section-tag::after{content:'';width:24px;height:1px;background:var(--blue);opacity:0.5}
+  .section-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:800;line-height:1.1;color:var(--navy);margin-bottom:16px;letter-spacing:-0.02em}
+  .section-title .grad{background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .section-intro{color:var(--text-light);font-size:17px;line-height:1.7}
+
+  /* === About === */
+  .about{background:linear-gradient(180deg,transparent 0%,var(--bg-2) 50%,transparent 100%)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .about-card{background:var(--white);padding:48px;border-radius:24px;border:1px solid var(--border);box-shadow:0 8px 32px rgba(10,25,41,0.04)}
+  .about-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .about-card>p{color:var(--text-light);font-size:15px;margin-bottom:24px;line-height:1.7}
+  .about p{color:var(--text-light);line-height:1.85;margin-bottom:20px;font-size:16px}
+  .about p strong{color:var(--text);font-weight:600}
+  .about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .about-tag{background:rgba(59,130,246,0.08);color:var(--blue);padding:6px 14px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid rgba(59,130,246,0.2)}
+  .quick-info{list-style:none;margin-top:24px;display:grid;gap:14px}
+  .quick-info li{display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--bg);border-radius:12px;border:1px solid var(--border)}
+  .quick-info-ic{width:36px;height:36px;background:var(--navy);color:var(--cyan);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+  .quick-info-label{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-bottom:2px}
+  .quick-info-value{font-size:14px;color:var(--navy);font-weight:600}
+
+  /* === Skills === */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+  .skill-cat{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:32px;transition:all 0.3s;position:relative;overflow:hidden}
+  .skill-cat::before{content:'';position:absolute;top:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width 0.4s}
+  .skill-cat:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(10,25,41,0.08);border-color:transparent}
+  .skill-cat:hover::before{width:100%}
+  .skill-cat-head{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+  .skill-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--navy),var(--navy-3));color:var(--cyan);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .skill-cat h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;color:var(--navy)}
+  .skill-cat-sub{font-size:12px;color:var(--text-light);margin-top:2px}
+  .skill-list{display:flex;flex-direction:column;gap:14px}
+  .skill-item{display:flex;flex-direction:column;gap:6px}
+  .skill-name{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:500;color:var(--text)}
+  .skill-level{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-light)}
+  .skill-bar{height:6px;background:var(--bg-2);border-radius:100px;overflow:hidden}
+  .skill-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:100px;width:0;transition:width 1.4s cubic-bezier(0.4,0,0.2,1)}
+
+  /* === Experience timeline === */
+  .experience{background:var(--bg-2);max-width:none;padding:120px 48px}
+  .experience-content{max-width:1400px;margin:0 auto}
+  .timeline{position:relative;max-width:900px;margin:64px auto 0;padding-left:32px}
+  .timeline::before{content:'';position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--blue),var(--cyan))}
+  .tl-item{position:relative;padding-bottom:40px;padding-left:40px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-dot{position:absolute;left:-31px;top:8px;width:24px;height:24px;background:var(--white);border:3px solid var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(59,130,246,0.1)}
+  .tl-dot::after{content:'';width:8px;height:8px;background:var(--cyan);border-radius:50%}
+  .tl-card{background:var(--white);padding:28px 32px;border-radius:16px;border:1px solid var(--border);transition:all 0.3s}
+  .tl-card:hover{transform:translateX(6px);box-shadow:0 12px 40px rgba(10,25,41,0.08);border-color:var(--blue)}
+  .tl-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:8px}
+  .tl-period{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--blue);background:rgba(59,130,246,0.08);padding:4px 12px;border-radius:100px;border:1px solid rgba(59,130,246,0.2)}
+  .tl-current{font-size:10px;color:var(--success);background:rgba(16,185,129,0.1);padding:4px 10px;border-radius:100px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;border:1px solid rgba(16,185,129,0.3)}
+  .tl-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:4px}
+  .tl-company{color:var(--blue);font-size:14px;font-weight:600;margin-bottom:16px}
+  .tl-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .tl-card li{padding-left:22px;position:relative;color:var(--text-light);font-size:14px;line-height:1.6}
+  .tl-card li::before{content:'▸';position:absolute;left:0;color:var(--cyan);font-weight:700}
+
+  /* === Projects === */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:32px;margin-top:48px}
+  .project{background:var(--white);border-radius:20px;overflow:hidden;border:1px solid var(--border);transition:all 0.35s;cursor:pointer}
+  .project:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(10,25,41,0.12);border-color:var(--blue)}
+  .project-img{aspect-ratio:4/3;background-size:cover;background-position:center;position:relative;overflow:hidden;background-color:var(--navy)}
+  .project-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,25,41,0.6) 100%);opacity:0;transition:opacity 0.3s}
+  .project:hover .project-img::after{opacity:1}
+  .project-imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px;height:100%}
+  .project-imgs div{background-size:cover;background-position:center;transition:transform 0.5s}
+  .project:hover .project-imgs div{transform:scale(1.05)}
+  .project-tag{position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);color:var(--navy);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:0.5px;z-index:2}
+  .project-body{padding:28px}
+  .project-cat{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blue);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;font-weight:600}
+  .project h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .project p{color:var(--text-light);font-size:14px;line-height:1.7;margin-bottom:20px}
+  .project-tech{display:flex;flex-wrap:wrap;gap:6px}
+  .project-tech span{background:var(--bg-2);color:var(--text);padding:4px 10px;border-radius:6px;font-size:11px;font-weight:500;font-family:'JetBrains Mono',monospace}
+
+  /* === Contact === */
+  .contact{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-3) 100%);color:#fff;max-width:none;padding:120px 48px;position:relative;overflow:hidden}
+  .contact::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,rgba(59,130,246,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(6,182,212,0.1) 0%,transparent 50%);pointer-events:none}
+  .contact-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start;position:relative;z-index:1}
+  .contact .section-tag{color:var(--cyan-light)}
+  .contact .section-tag::before,.contact .section-tag::after{background:var(--cyan-light)}
+  .contact .section-title{color:#fff}
+  .contact-intro{color:rgba(255,255,255,0.7);font-size:17px;line-height:1.8;margin-bottom:40px}
+  .contact-list{display:flex;flex-direction:column;gap:14px}
+  .contact-item{display:flex;align-items:center;gap:18px;padding:20px 22px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;text-decoration:none;color:#fff;transition:all 0.25s}
+  .contact-item:hover{background:rgba(59,130,246,0.1);border-color:var(--blue-light);transform:translateX(4px)}
+  .contact-item-ic{width:44px;height:44px;background:rgba(6,182,212,0.15);color:var(--cyan-light);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+  .contact-item-label{font-size:11px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:2px}
+  .contact-item-value{font-weight:600;font-size:15px}
+  form{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);padding:40px;border-radius:24px;backdrop-filter:blur(20px);display:flex;flex-direction:column;gap:18px}
+  form h3{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;font-size:24px;font-weight:700;margin-bottom:4px}
+  form>p{color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:12px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-group{display:flex;flex-direction:column}
+  label{font-size:12px;color:var(--cyan-light);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+  input,textarea,select{padding:14px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;font-family:inherit;font-size:14px;border-radius:10px;transition:all 0.2s;font-weight:400}
+  input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.3)}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--cyan-light);background:rgba(255,255,255,0.07)}
+  textarea{min-height:120px;resize:vertical}
+  form .btn{justify-content:center;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;margin-top:8px;font-size:15px}
+  form .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(6,182,212,0.4)}
+
+  /* === Footer === */
+  footer{background:#050d18;color:rgba(255,255,255,0.5);padding:40px 48px 32px;text-align:center;font-size:13px;border-top:1px solid rgba(255,255,255,0.05)}
+  footer .logo-mark{margin:0 auto 16px}
+  footer p{margin-bottom:6px}
+  footer a{color:var(--cyan-light);text-decoration:none}
+
+  /* === RESPONSIVE === */
+  @media(max-width:980px){
+    .hero{grid-template-columns:1fr;gap:48px;text-align:center;padding:100px 24px 60px}
+    .hero-badge{margin:0 auto 24px}
+    .hero-sub{justify-content:center}
+    .hero p{margin-left:auto;margin-right:auto}
+    .hero-actions{justify-content:center}
+    .hero-stats{margin:0 auto;max-width:480px}
+    .avatar-wrap{width:280px;height:280px;margin:0 auto}
+    .about-grid,.contact-content{grid-template-columns:1fr;gap:40px}
+  }
+
+  @media(max-width:768px){
+    header{padding:14px 20px}
+    .logo-text{display:none}
+    nav ul{display:none}
+    .burger{display:block}
+    nav{position:fixed!important;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;height:100dvh;background:rgba(248,250,252,0.98);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);display:flex!important;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity 0.35s,transform 0.35s,visibility 0.35s;z-index:1001;padding:80px 24px 40px}
+    nav.open{opacity:1;visibility:visible;transform:translateY(0)}
+    nav ul{display:flex!important;flex-direction:column;align-items:center;gap:28px;width:100%;list-style:none;padding:0;margin:0}
+    nav li{opacity:0;transform:translateY(8px);transition:opacity 0.3s,transform 0.3s}
+    nav.open li{opacity:1;transform:translateY(0)}
+    nav.open li:nth-child(1){transition-delay:0.05s}
+    nav.open li:nth-child(2){transition-delay:0.1s}
+    nav.open li:nth-child(3){transition-delay:0.15s}
+    nav.open li:nth-child(4){transition-delay:0.2s}
+    nav.open li:nth-child(5){transition-delay:0.25s}
+    nav.open li:nth-child(6){transition-delay:0.3s}
+    nav a{font-size:20px;color:var(--text);font-weight:600}
+    nav .cta-btn{padding:14px 28px}
+
+    .hero{padding:100px 20px 60px}
+    .hero h1{font-size:42px}
+    .hero p{font-size:15px}
+    .hero-sub{font-size:15px}
+    .avatar-wrap{width:240px;height:240px}
+    .floating-card{padding:10px 14px;font-size:12px}
+    .floating-card .ic{width:28px;height:28px;font-size:14px}
+    .fc1{left:-12px}.fc2{right:-12px}.fc3{left:0}
+    .hero-stats{grid-template-columns:repeat(3,1fr);gap:12px;padding-top:32px}
+    .stat-num{font-size:26px}
+    .stat-label{font-size:10px}
+
+    section{padding:80px 20px}
+    .section-head{margin-bottom:48px}
+    .section-title{font-size:30px}
+    .about-card{padding:28px;border-radius:18px}
+    .skills-grid{grid-template-columns:1fr;gap:16px}
+    .skill-cat{padding:24px}
+    .experience{padding:80px 20px}
+    .timeline{padding-left:20px;margin-top:48px}
+    .tl-item{padding-left:32px}
+    .tl-card{padding:22px}
+    .tl-card h3{font-size:18px}
+    .projects-grid{grid-template-columns:1fr;gap:20px}
+    .project-body{padding:22px}
+
+    .contact{padding:80px 20px}
+    form{padding:24px;border-radius:18px}
+    .form-row{grid-template-columns:1fr}
+    .btn{padding:14px 24px;font-size:13px}
+
+    footer{padding:32px 20px 24px}
+  }
+
+  @media(max-width:380px){
+    .hero h1{font-size:34px}
+    .section-title{font-size:26px}
+    .hero-stats{grid-template-columns:repeat(3,1fr);gap:8px}
+    .stat-num{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="bg-grid"></div>
+
+<header id="header">
+  <a href="#" class="logo">
+    <div class="logo-mark">NZ</div>
+    <div class="logo-text">
+      <span class="logo-name">Nabil Zaiou</span>
+      <span class="logo-role">Admin Sys & Réseaux</span>
+    </div>
+  </a>
+  <button class="burger" id="burger" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <nav id="nav">
+    <ul>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#skills">Compétences</a></li>
+      <li><a href="#experience">Expérience</a></li>
+      <li><a href="#projects">Réalisations</a></li>
+      <li><a href="#contact" class="cta-btn">Me contacter</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div data-aos="fade-up">
+    <div class="hero-badge">Disponible immédiatement</div>
+    <h1 class="display">
+      Nabil <span class="grad">Zaiou</span><br>
+      <span style="font-size:0.6em;font-weight:600;color:var(--text-light)">Administrateur Systèmes & Réseaux</span>
+    </h1>
+    <div class="hero-sub mono"><span class="typed-text" id="typed"></span></div>
+    <p>
+      <strong>9+ années d'expérience terrain</strong> en infrastructures réseau, téléphonie IP, vidéosurveillance et sécurité. Issu de la <strong>Gendarmerie Nationale</strong> où j'ai forgé ma rigueur, je conçois et déploie aujourd'hui des solutions fiables pour des entreprises exigeantes.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Me contacter
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#projects" class="btn btn-outline">Voir mes réalisations</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">9<span class="plus">+</span></div><div class="stat-label">Ans d'expérience</div></div>
+      <div><div class="stat-num">50<span class="plus">+</span></div><div class="stat-label">Déploiements</div></div>
+      <div><div class="stat-num">N1→N3</div><div class="stat-label">Niveaux support</div></div>
+    </div>
+  </div>
+
+  <div class="hero-visual" data-aos="fade-left" data-aos-delay="200">
+    <div class="avatar-wrap">
+      <div class="avatar-glow"></div>
+      <div class="avatar-ring"></div>
+      <div class="avatar-img" role="img" aria-label="Avatar de Nabil Zaiou"></div>
+      <div class="floating-card fc-slot1" id="fcSlot1"></div>
+      <div class="floating-card fc-slot2" id="fcSlot2"></div>
+      <div class="floating-card fc-slot3" id="fcSlot3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="about">
+  <div class="section-head" data-aos="fade-up">
+    <div class="section-tag">À propos</div>
+    <h2 class="section-title">Du <span class="grad">terrain</span><br>à l'expertise</h2>
+    <p class="section-intro">Un parcours forgé sur le terrain, dans des environnements exigeants où chaque ligne, chaque câble, chaque équipement doit fonctionner sans faille.</p>
+  </div>
+
+  <div class="about-grid">
+    <div data-aos="fade-right">
+      <p>Spécialiste en <strong>infrastructures réseau, téléphonie IP et sécurité</strong>, j'évolue depuis plus de neuf ans dans des environnements où la fiabilité n'est pas une option : la <strong>Gendarmerie Nationale</strong>, l'opérateur <strong>Paritel</strong>, et aujourd'hui <strong>Topline</strong>.</p>
+      <p>Mon approche est résolument <strong>orientée terrain</strong> : je ne me contente pas de configurer à distance, j'installe, je teste, je sécurise et je documente. De la pose de baie informatique à la mise en place d'un VPN site-à-site, en passant par le déploiement multi-sites pour des chaînes nationales, chaque mission est pour moi l'occasion de transmettre une exigence : <em>ça doit fonctionner, durablement</em>.</p>
+      <p>Ma double culture <strong>militaire et privée</strong> me permet d'allier la rigueur de la sécurité opérationnelle aux contraintes de productivité du secteur entreprise. Disponible immédiatement, je suis <strong>mobile en France</strong> (permis B + véhicule personnel) et habitué aux déplacements clients.</p>
+      <div class="about-tags">
+        <span class="about-tag">+9 ans d'expérience</span>
+        <span class="about-tag">Ex-Gendarmerie Nationale</span>
+        <span class="about-tag">Multi-sites</span>
+        <span class="about-tag">Terrain & Distance</span>
+        <span class="about-tag">N2 / N3</span>
+      </div>
+    </div>
+
+    <div class="about-card" data-aos="fade-left">
+      <h3>Pourquoi me choisir ?</h3>
+      <p>Au-delà des compétences techniques, ce qui me caractérise au quotidien :</p>
+      <ul class="quick-info">
+        <li><div class="quick-info-ic">🎯</div><div><div class="quick-info-label">Disponibilité</div><div class="quick-info-value">Immédiate · Mobile France</div></div></li>
+        <li><div class="quick-info-ic">🚗</div><div><div class="quick-info-label">Mobilité</div><div class="quick-info-value">Permis B + véhicule personnel</div></div></li>
+        <li><div class="quick-info-ic">🛠️</div><div><div class="quick-info-label">Approche</div><div class="quick-info-value">Terrain · Hands-on · Pragmatique</div></div></li>
+        <li><div class="quick-info-ic">🎖️</div><div><div class="quick-info-label">Expérience</div><div class="quick-info-value">7 ans Gendarmerie · 2 ans privé</div></div></li>
+        <li><div class="quick-info-ic">🔧</div><div><div class="quick-info-label">Spécialité</div><div class="quick-info-value">Multi-sites · PABX · CCTV · Réseau</div></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="section-head" data-aos="fade-up">
+    <div class="section-tag">Compétences</div>
+    <h2 class="section-title">Stack <span class="grad">technique</span></h2>
+    <p class="section-intro">Un éventail de compétences acquises sur le terrain, sur du matériel pro déployé en conditions réelles.</p>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-cat" data-aos="fade-up">
+      <div class="skill-cat-head">
+        <div class="skill-icon">🌐</div>
+        <div><h3>Réseaux</h3><div class="skill-cat-sub">Routage · Switching · WiFi</div></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-name"><span>Cisco</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="92"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Mikrotik</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="88"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Zyxel · TP-Link</span><span class="skill-level">AVANCÉ</span></div><div class="skill-bar"><div class="skill-fill" data-level="85"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>VPN · VLAN · ACL</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="90"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-cat" data-aos="fade-up" data-aos-delay="100">
+      <div class="skill-cat-head">
+        <div class="skill-icon">📞</div>
+        <div><h3>Téléphonie IP</h3><div class="skill-cat-sub">PABX · IPBX · VoIP</div></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-name"><span>Yeastar</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="93"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Siemens / Unify</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="90"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>SIP · Trunks · Routage</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="88"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Postes & convergence</span><span class="skill-level">AVANCÉ</span></div><div class="skill-bar"><div class="skill-fill" data-level="85"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-cat" data-aos="fade-up" data-aos-delay="200">
+      <div class="skill-cat-head">
+        <div class="skill-icon">📷</div>
+        <div><h3>Vidéosurveillance</h3><div class="skill-cat-sub">CCTV · IP · NVR / DVR</div></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-name"><span>HikVision</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="92"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Caméras IP / NVR</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="90"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Accès distant sécurisé</span><span class="skill-level">AVANCÉ</span></div><div class="skill-bar"><div class="skill-fill" data-level="86"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Stockage & archivage</span><span class="skill-level">AVANCÉ</span></div><div class="skill-bar"><div class="skill-fill" data-level="82"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-cat" data-aos="fade-up">
+      <div class="skill-cat-head">
+        <div class="skill-icon">🔒</div>
+        <div><h3>Sécurité</h3><div class="skill-cat-sub">Firewall · VPN · Auth</div></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-name"><span>VPN site-à-site / nomade</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="90"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Firewall · Filtrage</span><span class="skill-level">AVANCÉ</span></div><div class="skill-bar"><div class="skill-fill" data-level="85"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>VLAN · Segmentation</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="88"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Active Directory</span><span class="skill-level">AVANCÉ</span></div><div class="skill-bar"><div class="skill-fill" data-level="80"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-cat" data-aos="fade-up" data-aos-delay="100">
+      <div class="skill-cat-head">
+        <div class="skill-icon">🖥️</div>
+        <div><h3>Systèmes</h3><div class="skill-cat-sub">Serveurs · Postes · AD</div></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-name"><span>Windows Server</span><span class="skill-level">AVANCÉ</span></div><div class="skill-bar"><div class="skill-fill" data-level="85"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Linux (Debian/Ubuntu)</span><span class="skill-level">AVANCÉ</span></div><div class="skill-bar"><div class="skill-fill" data-level="78"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Active Directory</span><span class="skill-level">AVANCÉ</span></div><div class="skill-bar"><div class="skill-fill" data-level="82"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Support N2 / N3</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="92"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-cat" data-aos="fade-up" data-aos-delay="200">
+      <div class="skill-cat-head">
+        <div class="skill-icon">⚡</div>
+        <div><h3>Déploiement terrain</h3><div class="skill-cat-sub">Câblage · Baies · Fibre</div></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-name"><span>Câblage cuivre / fibre</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="95"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Baies & racks 19"</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="93"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Tests & recettes</span><span class="skill-level">EXPERT</span></div><div class="skill-bar"><div class="skill-fill" data-level="92"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Documentation</span><span class="skill-level">AVANCÉ</span></div><div class="skill-bar"><div class="skill-fill" data-level="85"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience" class="experience">
+  <div class="experience-content">
+    <div class="section-head" data-aos="fade-up">
+      <div class="section-tag">Expérience</div>
+      <h2 class="section-title">Un parcours <span class="grad">terrain</span></h2>
+      <p class="section-intro">De l'environnement militaire au secteur privé, neuf années à concevoir, déployer et maintenir des infrastructures.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item" data-aos="fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-meta">
+            <span class="tl-period">2023 — Aujourd'hui</span>
+            <span class="tl-current">En poste</span>
+          </div>
+          <h3>Administrateur Systèmes & Réseaux</h3>
+          <div class="tl-company">Topline</div>
+          <ul>
+            <li>Administration et supervision des infrastructures réseau multi-sites</li>
+            <li>Conception et déploiement de solutions de téléphonie IP (Yeastar, Siemens/Unify)</li>
+            <li>Mise en place et maintenance de systèmes de vidéosurveillance HikVision</li>
+            <li>Gestion des incidents N2/N3 et accompagnement des techniciens N1</li>
+            <li>Sécurisation : VPN site-à-site, segmentation VLAN, durcissement firewall</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-meta">
+            <span class="tl-period">2021 — 2023</span>
+          </div>
+          <h3>Technicien Systèmes & Réseaux</h3>
+          <div class="tl-company">Paritel Opérateur</div>
+          <ul>
+            <li>Installations clients : raccordement opérateur, configuration sur site</li>
+            <li>Déploiement et paramétrage PABX / IPBX (Yeastar, Siemens)</li>
+            <li>Câblage cuivre & fibre, pose et brassage de baies informatiques</li>
+            <li>Diagnostics et résolution de pannes (réseau, téléphonie, WiFi)</li>
+            <li>Relation client de proximité, formation utilisateurs</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-meta">
+            <span class="tl-period">2016 — 2023</span>
+          </div>
+          <h3>Technicien SIC · Systèmes d'Information et Communication</h3>
+          <div class="tl-company">Gendarmerie Nationale</div>
+          <ul>
+            <li>Administration de réseaux sécurisés en environnement opérationnel</li>
+            <li>Maintenance et exploitation de systèmes télécoms et radio</li>
+            <li>Support utilisateurs N2/N3 et formation des opérateurs</li>
+            <li>Déploiements terrain en conditions exigeantes (multi-sites, urgences)</li>
+            <li>Respect strict des procédures de sécurité et de confidentialité</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <div class="section-head" data-aos="fade-up">
+    <div class="section-tag">Réalisations</div>
+    <h2 class="section-title">Quelques <span class="grad">projets</span></h2>
+    <p class="section-intro">Un aperçu de déploiements menés de A à Z, de la conception à la mise en production.</p>
+  </div>
+
+  <div class="projects-grid">
+    <article class="project" data-aos="fade-up">
+      <div class="project-img">
+        <div class="project-imgs">
+          <div style="background-image:url('images/big1.png')"></div>
+          <div style="background-image:url('images/big2.png')"></div>
+        </div>
+        <span class="project-tag">Multi-sites</span>
+      </div>
+      <div class="project-body">
+        <div class="project-cat">Chaîne nationale</div>
+        <h3>Déploiement réseau & téléphonie</h3>
+        <p>Conception et déploiement complet pour une grande chaîne de magasins : réseau, téléphonie VoIP, WiFi, VPN site-à-site reliant l'ensemble des points de vente au siège.</p>
+        <div class="project-tech">
+          <span>Cisco</span><span>VLAN</span><span>VPN</span><span>VoIP</span><span>WiFi</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="project" data-aos="fade-up" data-aos-delay="100">
+      <div class="project-img">
+        <div class="project-imgs">
+          <div style="background-image:url('images/clin1.png')"></div>
+          <div style="background-image:url('images/clin2.png')"></div>
+        </div>
+        <span class="project-tag">Entreprise</span>
+      </div>
+      <div class="project-body">
+        <div class="project-cat">Bureau · Cabinet</div>
+        <h3>Infrastructure complète</h3>
+        <p>Mise en place d'une infrastructure complète pour un cabinet : architecture réseau, vidéosurveillance, alarme anti-intrusion, WiFi entreprise et baie informatique structurée.</p>
+        <div class="project-tech">
+          <span>HikVision</span><span>Baie 19"</span><span>Alarme</span><span>WiFi</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="project" data-aos="fade-up" data-aos-delay="200">
+      <div class="project-img">
+        <div class="project-imgs">
+          <div style="background-image:url('images/gar1.png')"></div>
+          <div style="background-image:url('images/gar2.png')"></div>
+        </div>
+        <span class="project-tag">PME</span>
+      </div>
+      <div class="project-body">
+        <div class="project-cat">Garage automobile</div>
+        <h3>Téléphonie IP & WiFi</h3>
+        <p>Installation et configuration complète d'un PABX IP pour un garage : routage des appels, postes IP, accueil téléphonique, déploiement d'un WiFi pro pour les ateliers.</p>
+        <div class="project-tech">
+          <span>Yeastar</span><span>PABX</span><span>SIP</span><span>WiFi pro</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="contact">
+  <div class="contact-content">
+    <div data-aos="fade-right">
+      <div class="section-tag">Contact</div>
+      <h2 class="section-title">Parlons de votre <span style="background:linear-gradient(135deg,var(--cyan-light),var(--blue-light));-webkit-background-clip:text;background-clip:text;color:transparent">projet</span></h2>
+      <p class="contact-intro">Un déploiement à prévoir, une infrastructure à auditer, une mission ponctuelle ou un poste à pourvoir ? N'hésitez pas à me contacter. Je réponds rapidement et sérieusement à chaque sollicitation.</p>
+
+      <div class="contact-list">
+        <a href="mailto:zaiou@outlook.fr" class="contact-item">
+          <div class="contact-item-ic">✉</div>
+          <div><div class="contact-item-label">Email</div><div class="contact-item-value">zaiou@outlook.fr</div></div>
+        </a>
+        <a href="https://github.com/Nabil-Zaiou" target="_blank" rel="noopener" class="contact-item">
+          <div class="contact-item-ic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.4 7.86 10.93.58.1.79-.25.79-.55v-1.93c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.17a11 11 0 015.8 0c2.2-1.48 3.17-1.17 3.17-1.17.63 1.59.24 2.76.12 3.05.74.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.38-5.25 5.66.42.36.78 1.06.78 2.14v3.17c0 .3.2.66.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+          </div>
+          <div><div class="contact-item-label">GitHub</div><div class="contact-item-value">github.com/Nabil-Zaiou</div></div>
+        </a>
+        <a href="#" class="contact-item" aria-disabled="true">
+          <div class="contact-item-ic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.43v6.31zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .78 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45C23.21 24 24 23.22 24 22.27V1.73C24 .78 23.21 0 22.22 0z"/></svg>
+          </div>
+          <div><div class="contact-item-label">LinkedIn</div><div class="contact-item-value">À venir</div></div>
+        </a>
+        <a href="cv-nabil-zaiou.pdf" class="contact-item">
+          <div class="contact-item-ic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </div>
+          <div><div class="contact-item-label">Télécharger</div><div class="contact-item-value">CV au format PDF</div></div>
+        </a>
+      </div>
+    </div>
+
+    <form data-aos="fade-left" onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Message envoyé';this.querySelector('button').style.background='var(--success)';">
+      <h3 class="display">Envoyez-moi un message</h3>
+      <p>Réponse sous 24h ouvrées</p>
+      <div class="form-row">
+        <div class="form-group"><label>Prénom *</label><input type="text" placeholder="Votre prénom" required></div>
+        <div class="form-group"><label>Nom *</label><input type="text" placeholder="Votre nom" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Email *</label><input type="email" placeholder="vous@exemple.fr" required></div>
+        <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
+      </div>
+      <div class="form-group"><label>Société (optionnel)</label><input type="text" placeholder="Nom de votre entreprise"></div>
+      <div class="form-group"><label>Type de demande</label>
+        <select>
+          <option>Opportunité d'emploi</option>
+          <option>Mission ponctuelle / prestation</option>
+          <option>Devis projet</option>
+          <option>Audit / conseil</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Votre message *</label><textarea placeholder="Décrivez brièvement votre besoin ou votre projet..." required></textarea></div>
+      <button type="submit" class="btn">Envoyer le message →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="logo-mark">NZ</div>
+  <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:#fff;font-size:16px">Nabil Zaiou</p>
+  <p style="margin-bottom:24px">Administrateur Systèmes & Réseaux</p>
+  <p>© 2026 — Tous droits réservés · <a href="mailto:zaiou@outlook.fr">zaiou@outlook.fr</a></p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({duration:800,once:true,offset:80,easing:'ease-out-cubic'});
+
+  // Header scrolled
+  const h=document.getElementById('header');
+  // Scroll progress bar
+  const sp=document.getElementById('scrollProgress');
+  window.addEventListener('scroll',()=>{
+    h.classList.toggle('scrolled',window.scrollY>20);
+    const s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight;
+    sp.style.width=(d>0?(s/d*100):0)+'%';
+  },{passive:true});
+
+  // Burger menu mobile
+  const burger=document.getElementById('burger'),navEl=document.getElementById('nav');
+  function toggleMenu(force){
+    const open=force!==undefined?force:!navEl.classList.contains('open');
+    navEl.classList.toggle('open',open);
+    burger.classList.toggle('open',open);
+    document.body.classList.toggle('menu-open',open);
+  }
+  burger.addEventListener('click',()=>toggleMenu());
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const href=a.getAttribute('href');
+      if(href==='#')return;
+      e.preventDefault();
+      toggleMenu(false);
+      const t=document.querySelector(href);
+      if(t)setTimeout(()=>t.scrollIntoView({behavior:'smooth'}),300);
+    });
+  });
+
+  // Typed text animation (hero subtitle)
+  const phrases=[
+    'Réseaux Cisco · Mikrotik · Zyxel',
+    'Téléphonie IP · PABX · VoIP',
+    'Vidéosurveillance HikVision',
+    'VPN · VLAN · Firewall',
+    'Ex-Gendarmerie Nationale',
+    'Disponible immédiatement'
+  ];
+  const typedEl=document.getElementById('typed');
+  let pi=0,ci=0,deleting=false;
+  function type(){
+    const cur=phrases[pi];
+    typedEl.textContent=deleting?cur.substring(0,ci-1):cur.substring(0,ci+1);
+    ci+=deleting?-1:1;
+    let delay=deleting?40:65;
+    if(!deleting&&ci===cur.length){deleting=true;delay=1800;}
+    else if(deleting&&ci===0){deleting=false;pi=(pi+1)%phrases.length;delay=300;}
+    setTimeout(type,delay);
+  }
+  setTimeout(type,800);
+
+  // === Floating skill bubbles : rotation toutes les 3s avec fade ===
+  const BUBBLES=[
+    {ic:'📡',c:'rgba(59,130,246,0.1)',cc:'var(--blue)',title:'Cisco · Mikrotik',sub:'Réseaux pro'},
+    {ic:'📞',c:'rgba(236,72,153,0.1)',cc:'#ec4899',title:'VoIP · PABX',sub:'Téléphonie IP'},
+    {ic:'🔒',c:'rgba(16,185,129,0.1)',cc:'var(--success)',title:'VPN · Firewall',sub:'Sécurité'},
+    {ic:'📷',c:'rgba(6,182,212,0.1)',cc:'var(--cyan)',title:'HikVision · CCTV',sub:'Vidéosurveillance'},
+    {ic:'🖥️',c:'rgba(99,102,241,0.1)',cc:'#6366f1',title:'Windows · Linux',sub:'Systèmes'},
+    {ic:'🌐',c:'rgba(59,130,246,0.1)',cc:'var(--blue)',title:'VLAN · ACL',sub:'Segmentation'},
+    {ic:'⚡',c:'rgba(245,158,11,0.1)',cc:'#f59e0b',title:'Fibre · Cuivre',sub:'Câblage pro'},
+    {ic:'🛡️',c:'rgba(16,185,129,0.1)',cc:'var(--success)',title:'Active Directory',sub:'Authentification'},
+    {ic:'📶',c:'rgba(6,182,212,0.1)',cc:'var(--cyan)',title:'WiFi · Mesh',sub:'Couverture sans-fil'},
+    {ic:'🔧',c:'rgba(99,102,241,0.1)',cc:'#6366f1',title:'Support N2/N3',sub:'Diagnostic & résolution'},
+    {ic:'🏢',c:'rgba(59,130,246,0.1)',cc:'var(--blue)',title:'Baies 19"',sub:'Architecture rack'},
+    {ic:'🎖️',c:'rgba(236,72,153,0.1)',cc:'#ec4899',title:'Ex-Gendarmerie',sub:'Rigueur opérationnelle'}
+  ];
+  function renderBubble(slot,b){
+    slot.innerHTML=`<div class="ic" style="background:${b.c};color:${b.cc}">${b.ic}</div>`+
+      `<div><div class="fc-title">${b.title}</div><div class="fc-sub">${b.sub}</div></div>`;
+  }
+  const slots=[document.getElementById('fcSlot1'),document.getElementById('fcSlot2'),document.getElementById('fcSlot3')];
+  // Tirage initial sans doublons sur les 3 slots
+  function pickDistinct(excludeIndexes){
+    let idx;
+    do{idx=Math.floor(Math.random()*BUBBLES.length)}while(excludeIndexes.includes(idx));
+    return idx;
+  }
+  const current=[0,1,2]; // index initiaux
+  current.forEach((idx,i)=>{renderBubble(slots[i],BUBBLES[idx]);setTimeout(()=>slots[i].classList.add('visible'),200+i*400)});
+
+  function rotateBubble(slotIdx){
+    const slot=slots[slotIdx];
+    slot.classList.remove('visible'); // fade out
+    setTimeout(()=>{
+      const next=pickDistinct(current);
+      current[slotIdx]=next;
+      renderBubble(slot,BUBBLES[next]);
+      slot.classList.add('visible'); // fade in
+    },800);
+  }
+  // Délais cycliques [5s, 7s, 10s] · décalage de démarrage : 5s, 7s, 10s
+  const CYCLE=[5000,7000,10000];
+  const startDelays=[5000,7000,10000];
+  function scheduleBubble(slotIdx,cycleIdx){
+    setTimeout(()=>{
+      rotateBubble(slotIdx);
+      scheduleBubble(slotIdx,(cycleIdx+1)%CYCLE.length);
+    },CYCLE[cycleIdx]);
+  }
+  // Démarrage : bulle 1 attend 5s puis cycle 5→7→10, bulle 2 attend 7s, bulle 3 attend 10s
+  [0,1,2].forEach(i=>setTimeout(()=>{
+    rotateBubble(i);
+    scheduleBubble(i,(i+1)%CYCLE.length);
+  },startDelays[i]));
+
+  // Animate skill bars on scroll into view
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.skill-fill').forEach(b=>{
+          const lvl=b.dataset.level;
+          setTimeout(()=>b.style.width=lvl+'%',150);
+        });
+        observer.unobserve(e.target);
+      }
+    });
+  },{threshold:0.2});
+  document.querySelectorAll('.skill-cat').forEach(c=>observer.observe(c));
+</script>
+</body>
+</html>
