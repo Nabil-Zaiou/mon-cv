@@ -10,6 +10,9 @@
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
+ img {
+  image-orientation: from-image;
+}
   :root{
     --navy:#0a1929;
     --navy-2:#0f2942;
@@ -39,7 +42,7 @@
 
   /* === Header === */
   header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(248,250,252,0.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all 0.3s;padding:18px 48px;display:flex;align-items:center;justify-content:space-between}
-  header.scrolled{border-bottom-color:var(--border);padding:14px 48px;background:rgba(248,250,252,0.95)}
+  er.scrolled{border-bottom-color:var(--border);padding:14px 48px;background:rgba(248,250,252,0.95)}
   .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy)}
   .logo-mark{width:40px;height:40px;background:linear-gradient(135deg,var(--navy),var(--navy-3));color:var(--cyan);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(10,25,41,0.15);position:relative;overflow:hidden}
   .logo-mark::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,0.1) 50%,transparent 70%);animation:shine 4s linear infinite}
